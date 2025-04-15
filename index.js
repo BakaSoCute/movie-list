@@ -1,7 +1,7 @@
 const inputNode = document.getElementById("addFilm_input");
 const buttonNode = document.getElementById("addFilm_button");
 const movieNode = document.getElementById("movie-list");
-const STORAGE_LIST_FILM = "storage_list_film";
+const viewedIcon = document.getElementById("movie-list_li");
 
 let my_ul = (elem = null);
 const addFilm = ()=>{
@@ -27,6 +27,16 @@ const addFilmToList = (film) => {
         <img id="movie-list_li_icon" class="movie-list_li_icon" src="crest.png" alt="">
         `;
     elem.className = "movie-list_li";
+
+    
+    const deleteIcon = elem.querySelector(".movie-list_li_icon");
+    deleteIcon.addEventListener("click", () => deleteMovie(elem, film));
+
+    const viewedIconSett = elem.querySelector(".movie-list_li_img");
+    viewedIconSett.addEventListener("click", () => {
+        elem.classList.toggle("movie-list_li__ver2");
+    })
+
     movieNode.appendChild(elem);
 }
 const loadFilms = () => {
@@ -35,5 +45,17 @@ const loadFilms = () => {
         addFilmToList(film);
     });
 }
+
+const deleteMovie = (elem, film) => {
+    movieNode.removeChild(elem);
+    const elemString = JSON.parse(localStorage.getItem("elemString")) || [];
+    const updatedElemString = elemString.filter(item => item !== film);
+    
+    localStorage.setItem("elemString", JSON.stringify(updatedElemString));
+}
+
+
+
+
 loadFilms();
 buttonNode.addEventListener("click", addFilm);
