@@ -70,7 +70,8 @@ body{
     
 }
 .addFilm{
-    padding: 86px 70px 0px 70px;
+    padding-top: 86px;
+    padding-left: 20px;
 }
 .addFilm_input{
     border: none;
@@ -87,18 +88,25 @@ body{
 }
 .movie-list{
     display: flex;
-    height: 400px;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+    margin-top: 20px;
     flex-direction: column;
-    margin: 0 auto;
-    padding: 40px 70px;
+    padding-left: 0px;
+    padding-right: 0px;
     gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
 
 }
 .movie-list_li{
-    width: 790px;
-    height: 71px;
+    width: 90%;
+    min-height: 60px;
+    height: auto;
     padding-left: 60px;
     display: flex;
+    flex-direction: row;
     position: relative;
     align-items: center;
     font-size: 20px;
